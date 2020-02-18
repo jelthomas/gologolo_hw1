@@ -80,6 +80,7 @@ export const GoLogoLoHTML = {
  */
 export const GoLogoLoCallback = {
     GOLOGOLO_PROCESS_CHANGE_TEXT_COLOR: "processChangeTextColor",
-    GOLOGOLO_PROCESS_CHANGE_FONT_SIZE: "processChangeFontSize"
+    GOLOGOLO_PROCESS_CHANGE_FONT_SIZE: "processChangeFontSize",
+    GOLOGOLO_PROCESS_CHANGE_TEXT: "processChangeText"
     
 };

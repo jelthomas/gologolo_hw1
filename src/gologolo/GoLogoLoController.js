@@ -19,7 +19,7 @@ export default class GoLogoLoController
      * @param {GoLogoLoCallback} callback The callback function to be executed when
      * the event occurs.
      */
-    registerEventHandler(id, eventName, callback) {
+    eventHandler(id, eventName, callback) {
         // GET THE CONTROL IN THE GUI WITH THE CORRESPONDING id
         let control = document.getElementById(id);
 
@@ -28,10 +28,11 @@ export default class GoLogoLoController
             control.addEventListener(eventName, callback);
     }
 
-    registerAppsterEventHandlers() {
-        this.registerEventHandler(GoLogoLoGUIId.GOLOGOLO_TEXT_COLOR_PICKER, GoLogoLoHTML.CHANGE, this[GoLogoLoCallback.GOLOGOLO_PROCESS_CHANGE_TEXT_COLOR]);
-        this.registerEventHandler(GoLogoLoGUIId.GOLOGOLO_TEXT_COLOR_PICKER, GoLogoLoHTML.INPUT, this[GoLogoLoCallback.GOLOGOLO_PROCESS_CHANGE_TEXT_COLOR]);
-        this.registerEventHandler(GoLogoLoGUIId.GOLOGOLO_FONT_SIZE_SLIDER, GoLogoLoHTML.INPUT, this[GoLogoLoCallback.GOLOGOLO_PROCESS_CHANGE_FONT_SIZE]);
+    goLogoLoEventHandlers() {
+        this.eventHandler(GoLogoLoGUIId.GOLOGOLO_TEXT_COLOR_PICKER, GoLogoLoHTML.CHANGE, this[GoLogoLoCallback.GOLOGOLO_PROCESS_CHANGE_TEXT_COLOR]);
+        this.eventHandler(GoLogoLoGUIId.GOLOGOLO_TEXT_COLOR_PICKER, GoLogoLoHTML.INPUT, this[GoLogoLoCallback.GOLOGOLO_PROCESS_CHANGE_TEXT_COLOR]);
+        this.eventHandler(GoLogoLoGUIId.GOLOGOLO_FONT_SIZE_SLIDER, GoLogoLoHTML.INPUT, this[GoLogoLoCallback.GOLOGOLO_PROCESS_CHANGE_FONT_SIZE]);
+        this.eventHandler(GoLogoLoGUIId.GOLOGOLO_EDIT_TEXT_BUTTON, GoLogoLoHTML.CLICK, this[GoLogoLoCallback.GOLOGOLO_PROCESS_CHANGE_TEXT]);
     }
 
     /**
@@ -69,6 +70,17 @@ export default class GoLogoLoController
     processChangeFontSize= () => {
         let fontSlider = document.getElementById(GoLogoLoGUIId.GOLOGOLO_FONT_SIZE_SLIDER);
         let font = fontSlider.value  
+        if(font <= 5){
+            font = "5pt";
+        }
+        font = font*2 + "pt";
+        this.model.editFontSize(font);
+        let text = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT);
+        text.style.fontSize = font;
+    }
+
+    processChangeText= () => {
+        let text = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT);
         if(font <= 5){
             font = "5pt";
         }

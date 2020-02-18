@@ -44,7 +44,4 @@ export default class GoLogoLoModel extends AppsterModel {
         return appWork;
     }
 
-    updateText() {
- //       this.view.
-    }
 }

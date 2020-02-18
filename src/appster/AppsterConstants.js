@@ -29,11 +29,7 @@ export const AppsterCallback = {
     APPSTER_PROCESS_LOGO_NAME: "processLogoName",
     APPSTER_PROCESS_CANCEL_LOGO_NAME: "processCancelLogoName",
     APPSTER_PROCESS_CONFIRM_MODAL: "processConfirmModal",
-    APPSTER_PROCESS_ILLEGAL_LENGTH_CONFIRM_MODAL: "processIllegalLengthConfirmModal",
-
-    GOLOGOLO_PROCESS_CHANGE_TEXT_COLOR: "processChangeTextColor",
-    GOLOGOLO_PROCESS_CHANGE_FONT_SIZE: "processChangeFontSize"
-    
+    APPSTER_PROCESS_ILLEGAL_LENGTH_CONFIRM_MODAL: "processIllegalLengthConfirmModal"
 };
 
 /**
@@ -158,7 +154,8 @@ export const AppsterHTML = {
   * and scale well.
   */
  export const AppsterSymbols = {
-    DELETE: "&#128465;"     // TRASH SYMBOL
+    DELETE: "&#128465;",     // TRASH SYMBOL
+    EDIT: "&#x270e"
 };
 
 export const AppsterText = {
