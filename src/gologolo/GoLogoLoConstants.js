@@ -40,3 +40,46 @@ export const GoLogoLoText = {
     GOLOGOLO_PADDING_TEXT: "gologolo_padding_text",
     GOLOGOLO_MARGIN_TEXT: "gologolo_margin_text"
 }
+
+/**
+ * GoLogoLoHTML - these are html elements, attributes, and events that will be needed
+ * to generate the appropriate text for our site pages.
+ */
+export const GoLogoLoHTML = {
+    A: "a",
+    BR: "br",
+    BUTTON: "button",
+    CHANGE: "change",
+    CLASS: "class",
+    CLICK: "click",
+    COLOR: "color",
+    DATA_ANIMATION: "data-animation",
+    DIV: "div",
+    HEADER: "header",
+    H1: "h1", H2: "h2", H3: "h3", H4: "h4", H5: "h5", H6: "h6",  
+    HIDDEN: "hidden",
+    ID: "id",
+    INPUT: "input",
+    KEYUP: "keyup",
+    LI: "li",
+    ONCLICK: "onclick",
+    P: "p",
+    RANGE: "range",
+    SECTION: "section",
+    SELECTION: "selection",
+    SPAN: "span",
+    STRONG: "strong",
+    TEXT: "text",
+    TYPE: "type",
+    UL: "ul"
+};
+
+/**
+ * GoLogoLoCallback - these are the functions we'll define that will be
+ * called in response to interactions with GUI controls.
+ */
+export const GoLogoLoCallback = {
+    GOLOGOLO_PROCESS_CHANGE_TEXT_COLOR: "processChangeTextColor",
+    GOLOGOLO_PROCESS_CHANGE_FONT_SIZE: "processChangeFontSize"
+    
+};

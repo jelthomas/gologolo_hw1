@@ -1,5 +1,4 @@
 import {AppsterCallback, AppsterGUIId, AppsterHTML} from './AppsterConstants.js'
-import {GoLogoLoGUIId} from '../gologolo/GoLogoLoConstants.js'
 export default class AppsterController {
     constructor() {
         this.model = null;
@@ -34,9 +33,6 @@ export default class AppsterController {
         // THEN THE CONTROLS ON THE EDIT SCREEN
         this.registerEventHandler(AppsterGUIId.APPSTER_EDIT_HOME_LINK, AppsterHTML.CLICK, this[AppsterCallback.APPSTER_PROCESS_GO_HOME]);
         this.registerEventHandler(AppsterGUIId.APPSTER_EDIT_TRASH, AppsterHTML.CLICK, this[AppsterCallback.APPSTER_PROCESS_DELETE_WORK]);
-        this.registerEventHandler(GoLogoLoGUIId.GOLOGOLO_TEXT_COLOR_PICKER, AppsterHTML.CHANGE, this[AppsterCallback.GOLOGOLO_PROCESS_CHANGE_TEXT_COLOR]);
-        this.registerEventHandler(GoLogoLoGUIId.GOLOGOLO_TEXT_COLOR_PICKER, AppsterHTML.INPUT, this[AppsterCallback.GOLOGOLO_PROCESS_CHANGE_TEXT_COLOR]);
-        this.registerEventHandler(GoLogoLoGUIId.GOLOGOLO_FONT_SIZE_SLIDER, AppsterHTML.INPUT, this[AppsterCallback.GOLOGOLO_PROCESS_CHANGE_FONT_SIZE]);
 
         // AND THE MODAL BUTTONS
         this.registerEventHandler(AppsterGUIId.APPSTER_YES_NO_MODAL_YES_BUTTON, AppsterHTML.CLICK, this[AppsterCallback.APPSTER_PROCESS_CONFIRM_DELETE_WORK]);
@@ -201,26 +197,4 @@ export default class AppsterController {
         this.model.view.hideIllegalLengthConfirmModalDialog();
         this.model.view.showTextInputDialog();
     }
-
-    processChangeTextColor= () => {
-        let textColorField = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT_COLOR_PICKER);
-        let textColor = textColorField.value;
-        this.model.editTextColor(textColor);
-        let text = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT);
-        text.style.color = textColor;
-    }
-
-    processChangeFontSize= () => {
-        let fontSlider = document.getElementById(GoLogoLoGUIId.GOLOGOLO_FONT_SIZE_SLIDER);
-        let font = fontSlider.value  
-        if(font <= 5){
-            font = "5pt";
-        }
-        font = font*2 + "pt";
-        this.model.editFontSize(font);
-        let logoFont = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT);
-        logoFont.style.fontSize = font;
-    }
-
-
 }
