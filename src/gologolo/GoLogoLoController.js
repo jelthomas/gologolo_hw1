@@ -28,11 +28,22 @@ export default class GoLogoLoController
             control.addEventListener(eventName, callback);
     }
 
-    goLogoLoEventHandlers() {
+    registerOtherEventHandlers() {
         this.eventHandler(GoLogoLoGUIId.GOLOGOLO_TEXT_COLOR_PICKER, GoLogoLoHTML.CHANGE, this[GoLogoLoCallback.GOLOGOLO_PROCESS_CHANGE_TEXT_COLOR]);
         this.eventHandler(GoLogoLoGUIId.GOLOGOLO_TEXT_COLOR_PICKER, GoLogoLoHTML.INPUT, this[GoLogoLoCallback.GOLOGOLO_PROCESS_CHANGE_TEXT_COLOR]);
         this.eventHandler(GoLogoLoGUIId.GOLOGOLO_FONT_SIZE_SLIDER, GoLogoLoHTML.INPUT, this[GoLogoLoCallback.GOLOGOLO_PROCESS_CHANGE_FONT_SIZE]);
-        this.eventHandler(GoLogoLoGUIId.GOLOGOLO_EDIT_TEXT_BUTTON, GoLogoLoHTML.CLICK, this[GoLogoLoCallback.GOLOGOLO_PROCESS_CHANGE_TEXT]);
+        this.eventHandler(GoLogoLoGUIId.GOLOGOLO_BACKGROUND_COLOR_PICKER, GoLogoLoHTML.CHANGE, this[GoLogoLoCallback.GOLOGOLO_PROCESS_CHANGE_BACKGROUND_COLOR]);
+        this.eventHandler(GoLogoLoGUIId.GOLOGOLO_BACKGROUND_COLOR_PICKER, GoLogoLoHTML.INPUT, this[GoLogoLoCallback.GOLOGOLO_PROCESS_CHANGE_BACKGROUND_COLOR]);
+        this.eventHandler(GoLogoLoGUIId.GOLOGOLO_BORDER_COLOR_PICKER, GoLogoLoHTML.CHANGE, this[GoLogoLoCallback.GOLOGOLO_PROCESS_CHANGE_BORDER_COLOR]);
+        this.eventHandler(GoLogoLoGUIId.GOLOGOLO_BORDER_COLOR_PICKER, GoLogoLoHTML.INPUT, this[GoLogoLoCallback.GOLOGOLO_PROCESS_CHANGE_BORDER_COLOR]);
+        this.eventHandler(GoLogoLoGUIId.GOLOGOLO_BORDER_THICKNESS_SLIDER, GoLogoLoHTML.INPUT, this[GoLogoLoCallback.GOLOGOLO_PROCESS_CHANGE_BORDER_WIDTH]);
+        this.eventHandler(GoLogoLoGUIId.GOLOGOLO_BORDER_RADIUS_SLIDER, GoLogoLoHTML.INPUT, this[GoLogoLoCallback.GOLOGOLO_PROCESS_CHANGE_BORDER_RADIUS]);
+        this.eventHandler(GoLogoLoGUIId.GOLOGOLO_PADDING_SLIDER, GoLogoLoHTML.INPUT, this[GoLogoLoCallback.GOLOGOLO_PROCESS_CHANGE_PADDING]);
+        this.eventHandler(GoLogoLoGUIId.GOLOGOLO_MARGIN_SLIDER, GoLogoLoHTML.INPUT, this[GoLogoLoCallback.GOLOGOLO_PROCESS_CHANGE_MARGIN]);  
+        this.eventHandler(GoLogoLoGUIId.GOLOGOLO_EDIT_TEXT_BUTTON, GoLogoLoHTML.CLICK, this[GoLogoLoCallback.GOLOGOLO_PROCESS_CHANGE_TEXT]);      
+        this.eventHandler(GoLogoLoGUIId.GOLOGOLO_TEXT_INPUT_MODAL_CANCEL_BUTTON, GoLogoLoHTML.CLICK, this[GoLogoLoCallback.GOLOGOLO_PROCESS_CANCEL_LOGO_TEXT]);
+        this.eventHandler(GoLogoLoGUIId.GOLOGOLO_TEXT_INPUT_MODAL_ENTER_BUTTON, GoLogoLoHTML.CLICK, this[GoLogoLoCallback.GOLOGOLO_PROCESS_LOGO_TEXT]);
+        this.eventHandler(GoLogoLoGUIId.GOLOGOLO_TEXT_INPUT_MODAL_TEXTFIELD, GoLogoLoHTML.INPUT, this[GoLogoLoCallback.GOLOGOLO_PROCESS_TEMP_LOGO_TEXT]);
     }
 
     /**
@@ -67,11 +78,27 @@ export default class GoLogoLoController
         text.style.color = textColor;
     }
 
+    processChangeBackgroundColor= () => {
+        let backgroundColorField = document.getElementById(GoLogoLoGUIId.GOLOGOLO_BACKGROUND_COLOR_PICKER);
+        let backgroundColor = backgroundColorField.value;
+        this.model.editBackgroundColor(backgroundColor);
+        let text = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT);
+        text.style.backgroundColor = backgroundColor;
+    }
+
+    processChangeBorderColor= () => {
+        let borderColorField = document.getElementById(GoLogoLoGUIId.GOLOGOLO_BORDER_COLOR_PICKER);
+        let borderColor = borderColorField.value;
+        this.model.editBorderColor(borderColor);
+        let text = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT);
+        text.style.borderColor = borderColor;
+    }
+
     processChangeFontSize= () => {
         let fontSlider = document.getElementById(GoLogoLoGUIId.GOLOGOLO_FONT_SIZE_SLIDER);
-        let font = fontSlider.value  
+        let font = fontSlider.value 
         if(font <= 5){
-            font = "5pt";
+            font = 5;
         }
         font = font*2 + "pt";
         this.model.editFontSize(font);
@@ -79,15 +106,67 @@ export default class GoLogoLoController
         text.style.fontSize = font;
     }
 
-    processChangeText= () => {
+    processChangeBorderWidth= () => {
+        let borderSlider = document.getElementById(GoLogoLoGUIId.GOLOGOLO_BORDER_THICKNESS_SLIDER);
+        let input = borderSlider.value;
+        input = input/2 + "pt";
+        this.model.editBorderWidth(input);
         let text = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT);
-        if(font <= 5){
-            font = "5pt";
-        }
-        font = font*2 + "pt";
-        this.model.editFontSize(font);
-        let logoFont = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT);
-        logoFont.style.fontSize = font;
+        text.style.borderWidth = input;
+    }
+
+    processChangeBorderRadius= () => {
+        let borderSlider = document.getElementById(GoLogoLoGUIId.GOLOGOLO_BORDER_RADIUS_SLIDER);
+        let input = borderSlider.value;
+        input = input*1.5 + "pt";
+        this.model.editBorderRadius(input);
+        let text = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT);
+        text.style.borderRadius = input;
+    }
+
+    processChangeText= () => {
+        this.text = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT).innerHTML;
+        this.model.view.showChangeTextInputDialog();
+    }
+
+    processCancelTextChange= () =>{
+        let logoText = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT);
+        logoText.innerHTML = this.text;
+        this.model.view.hideChangeTextInputDialog();
+    }
+
+    processConfirmTextChange= () =>{
+        let nameTextField = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT_INPUT_MODAL_TEXTFIELD);
+        let newName = nameTextField.value;
+        this.model.editText(newName);
+        let logoText = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT);
+        logoText.innerHTML = newName;
+        this.model.view.hideChangeTextInputDialog();
+    }
+
+    processTempTextChange = () =>{
+        let nameTextField = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT_INPUT_MODAL_TEXTFIELD);
+        let newName = nameTextField.value;
+        let logoText = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT);
+        logoText.innerHTML = newName;
+    }
+
+    processChangePadding= () => {
+        let paddingSlider = document.getElementById(GoLogoLoGUIId.GOLOGOLO_PADDING_SLIDER);
+        let input = paddingSlider.value;
+        input = input + "pt";
+        this.model.editPadding(input);
+        let text = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT);
+        text.style.padding = input;
+    }
+
+    processChangeMargin= () => {
+        let marginSlider = document.getElementById(GoLogoLoGUIId.GOLOGOLO_MARGIN_SLIDER);
+        let input = marginSlider.value;
+        input = input + "pt";
+        this.model.editMargin(input);
+        let text = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT);
+        text.style.margin = input;
     }
 
 }

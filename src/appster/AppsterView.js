@@ -85,12 +85,15 @@ export default class AppsterView {
             let appsterConfirmModal = this.buildAppsterConfirmModal();
             let appsterIllegalLengthConfirmModal = this.buildAppsterIllegalLengthConfirmModal();
             let appsterTextInputModal = this.buildAppsterTextInputModal();
+            let appsterChangeTextInputModal = this.buildAppsterChangeTextInputModal(); //Overridden
             appsterRootDiv.appendChild(appsterHomeScreenDiv);
             appsterRootDiv.appendChild(appsterEditScreenDiv);
             appsterRootDiv.appendChild(appsterYesNoModal);
             appsterRootDiv.appendChild(appsterConfirmModal);
             appsterRootDiv.appendChild(appsterIllegalLengthConfirmModal);
             appsterRootDiv.appendChild(appsterTextInputModal);
+            appsterRootDiv.appendChild(appsterChangeTextInputModal);
+
 
             // HIDE THE THINGS THAT ARE NOT VISIBLE
             this.showElementWithId(AppsterGUIId.APPSTER_EDIT_SCREEN, false);            
@@ -383,6 +386,11 @@ export default class AppsterView {
         textFrame.appendChild(footer);
         textModal.appendChild(textFrame);
         return textModal;
+    }
+
+    //Overridden
+    buildAppsterChangeTextInputModal(){
+
     }
 
     /**

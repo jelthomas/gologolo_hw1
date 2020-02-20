@@ -43,6 +43,11 @@ export default class AppsterController {
         this.registerEventHandler(AppsterGUIId.APPSTER_ILLEGAL_LENGTH_CONFIRM_MODAL_OK_BUTTON, AppsterHTML.CLICK, this[AppsterCallback.APPSTER_PROCESS_ILLEGAL_LENGTH_CONFIRM_MODAL]);
     }
 
+    //Overridden by child class
+    registerOtherEventHandlers(){
+
+    }
+
     /**
     * This method sets up a callback method for an element, registering the
     * elementCallbackName (e.g. click) function for the element control in the DOM, specifying
@@ -90,12 +95,8 @@ export default class AppsterController {
      * new work.
      */
     processCreateNewWork = () => {
-        console.log("processCreateNewWork");
         this.model.view.showTextInputDialog();
         // PROMPT FOR THE NAME OF THE NEW LIST
-        
-        // MAKE A BRAND NEW LIST
-        //this.model.goList();
     }
 
     /**
@@ -106,8 +107,6 @@ export default class AppsterController {
      * the controls on the edit screen.
      */
     processEditWork = (event) => {
-        console.log("processEditWork");
-
         // GET THE WORK THAT THE USER WANTS TO LOAD
         let clickedElement = event.target;
         let workName = clickedElement.workId;

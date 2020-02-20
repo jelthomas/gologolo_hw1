@@ -50,9 +50,10 @@ export default class Appster {
 
         // AND SETUP THE APPSTER EVENT HANDLERS
         this.controller.registerAppsterEventHandlers();
+        
+        //Will be overridden by child class
+        this.controller.registerOtherEventHandlers();
 
-        //AND SETUP THE GOLOGOLO EVENT HANDLERS
-        this.controller.goLogoLoEventHandlers();
     }
 
     loadJsonFile(testFilePath, callback) {

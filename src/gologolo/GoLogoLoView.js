@@ -1,10 +1,65 @@
-import {GoLogoLoGUIClass, GoLogoLoGUIId, GoLogoLoText} from './GoLogoLoConstants.js'
+import {GoLogoLoGUIClass, GoLogoLoGUIId, GoLogoLoText, GoLogoLoHTML} from './GoLogoLoConstants.js'
 import {AppsterHTML, AppsterSymbols} from '../appster/AppsterConstants.js'
 import AppsterView from '../appster/AppsterView.js'
 
 export default class GoLogoLoView extends AppsterView {
     constructor() {
         super();
+    }
+
+    buildAppsterChangeTextInputModal(){
+        let textModal = this.buildElement(  GoLogoLoHTML.DIV, 
+                                            GoLogoLoGUIId.GOLOGOLO_TEXT_INPUT_MODAL,
+                                            [GoLogoLoGUIClass.GOLOGOLO_MODAL],
+                                            [],
+                                            null,
+                                            GoLogoLoGUIClass.MODAL_ANIMATION_LEFT);
+        let textFrame = this.buildElement( GoLogoLoHTML.DIV, 
+                                            GoLogoLoGUIId.GOLOGOLO_TEXT_INPUT_MODAL_FRAME,
+                                            [GoLogoLoGUIClass.GOLOGOLO_MODAL_FRAME]);
+        let header = this.buildElement( GoLogoLoHTML.HEADER, 
+                                        GoLogoLoGUIId.GOLOGOLO_TEXT_INPUT_MODAL_HEADER,
+                                        [GoLogoLoGUIClass.GOLOGOLO_MODAL_HEADER]);
+        let section = this.buildElement(    GoLogoLoHTML.SECTION, 
+                                            GoLogoLoGUIId.GOLOGOLO_TEXT_INPUT_MODAL_SECTION,
+                                            [GoLogoLoGUIClass.GOLOGOLO_MODAL_SECTION]);
+        let p = this.buildElement(GoLogoLoHTML.P);
+        let strong = this.buildElement(    GoLogoLoHTML.STRONG, 
+                                                "",
+                                                [],
+                                                [],
+                                                GoLogoLoText.GOLOGOLO_TEXT_INPUT_MODAL_PROMPT_TEXT);
+        let textFieldAttributes = [];
+        textFieldAttributes[GoLogoLoHTML.TYPE] = GoLogoLoHTML.TEXT;
+        let textField = this.buildElement(  GoLogoLoHTML.INPUT,
+                                            GoLogoLoGUIId.GOLOGOLO_TEXT_INPUT_MODAL_TEXTFIELD,
+                                            [GoLogoLoGUIClass.GOLOGOLO_MODAL_TEXTFIELD],
+                                            textFieldAttributes);
+        let enterButton = this.buildElement(   GoLogoLoHTML.BUTTON, 
+                                            GoLogoLoGUIId.GOLOGOLO_TEXT_INPUT_MODAL_ENTER_BUTTON,
+                                            [GoLogoLoGUIClass.GOLOGOLO_MODAL_BUTTON],
+                                            [],
+                                            GoLogoLoText.GOLOGOLO_TEXT_INPUT_MODAL_ENTER_BUTTON_TEXT);
+        let cancelButton = this.buildElement(GoLogoLoHTML.BUTTON, 
+                                            GoLogoLoGUIId.GOLOGOLO_TEXT_INPUT_MODAL_CANCEL_BUTTON,
+                                            [GoLogoLoGUIClass.GOLOGOLO_MODAL_BUTTON],
+                                            [],
+                                            GoLogoLoText.GOLOGOLO_TEXT_INPUT_MODAL_CANCEL_BUTTON_TEXT);
+        let footer = this.buildElement(     GoLogoLoHTML.FOOTER, 
+                                            "", 
+                                            [GoLogoLoGUIClass.GOLOGOLO_MODAL_FOOTER],
+                                            [],
+                                            GoLogoLoText.GOLOGOLO_TEXT_INPUT_MODAL_FOOTER_TEXT);
+        p.appendChild(strong);
+        section.appendChild(p);
+        textFrame.appendChild(header);
+        textFrame.appendChild(section);
+        section.appendChild(textField);
+        section.appendChild(enterButton);
+        section.appendChild(cancelButton);
+        textFrame.appendChild(footer);
+        textModal.appendChild(textFrame);
+        return textModal;
     }
 
     fillAppWorkspace(workspace) {
@@ -22,7 +77,7 @@ export default class GoLogoLoView extends AppsterView {
         let backgroundColorPicker = this.buildElement(AppsterHTML.INPUT, GoLogoLoGUIId.GOLOGOLO_BACKGROUND_COLOR_PICKER, [], colorPickerAttributes);
         let borderColorPicker = this.buildElement(AppsterHTML.INPUT, GoLogoLoGUIId.GOLOGOLO_BORDER_COLOR_PICKER, [], colorPickerAttributes);
         let borderRadiusSlider = this.buildElement(AppsterHTML.INPUT, GoLogoLoGUIId.GOLOGOLO_BORDER_RADIUS_SLIDER, [], rangeAttributes);
-        let borderThicknessSlider = this.buildElement(AppsterHTML.INPUT, GoLogoLoGUIId.GOLOGOLO_BORDER_RADIUS_SLIDER, [], rangeAttributes);
+        let borderThicknessSlider = this.buildElement(AppsterHTML.INPUT, GoLogoLoGUIId.GOLOGOLO_BORDER_THICKNESS_SLIDER, [], rangeAttributes);
         let paddingSlider = this.buildElement(AppsterHTML.INPUT, GoLogoLoGUIId.GOLOGOLO_PADDING_SLIDER, [], rangeAttributes);
         let marginSlider = this.buildElement(AppsterHTML.INPUT, GoLogoLoGUIId.GOLOGOLO_MARGIN_SLIDER, [], rangeAttributes);
         let textDiv = this.buildElement(AppsterHTML.DIV, GoLogoLoGUIId.GOLOGOLO_TEXT);
@@ -102,4 +157,72 @@ export default class GoLogoLoView extends AppsterView {
         let textList = document.getElementById(listItemId);
         textList.innerHTML += textList.innerHTML + letterToAppend;
     }
+
+    buildGoLogoLoChangeTextInputModal() {
+        let textModal = this.buildElement(  GoLogoLoHTML.DIV, 
+                                            GoLogoLoGUIId.GOLOGOLO_CHANGE_TEXT_INPUT_MODAL,
+                                            [GoLogoLoGUIClass.GOLOGOLO_MODAL],
+                                            [],
+                                            null,
+                                            GoLogoLoGUIClass.MODAL_ANIMATION_LEFT);
+        let textFrame = this.buildElement( GoLogoLoHTML.DIV, 
+                                            GoLogoLoGUIId.GOLOGOLO_CHANGE_TEXT_INPUT_MODAL_FRAME,
+                                            [GoLogoLoGUIClass.GOLOGOLO_MODAL_FRAME]);
+        let header = this.buildElement( GoLogoLoHTML.HEADER, 
+                                        GoLogoLoGUIId.GOLOGOLO_CHANGE_TEXT_INPUT_MODAL_HEADER,
+                                        [GoLogoLoGUIClass.GOLOGOLO_MODAL_HEADER]);
+        let section = this.buildElement(    GoLogoLoHTML.SECTION, 
+                                            GoLogoLoGUIId.GOLOGOLO_CHANGE_TEXT_INPUT_MODAL_SECTION,
+                                            [GoLogoLoGUIClass.GOLOGOLO_MODAL_SECTION]);
+        let p = this.buildElement(GoLogoLoHTML.P);
+        let strong = this.buildElement(    GoLogoLoHTML.STRONG, 
+                                                "",
+                                                [],
+                                                [],
+                                                GOLOGOLOText.GOLOGOLO_CHANGE_TEXT_INPUT_MODAL_PROMPT_TEXT);
+        let textFieldAttributes = [];
+        textFieldAttributes[GoLogoLoHTML.TYPE] = GoLogoLoHTML.TEXT;
+        let textField = this.buildElement(  GoLogoLoHTML.INPUT,
+                                            G0LogoLoGUIId.GOLOGOLO_CHANGE_TEXT_INPUT_MODAL_TEXTFIELD,
+                                            [GoLogoLoGUIClass.GOLOGOLO_MODAL_TEXTFIELD],
+                                            textFieldAttributes);
+        let enterButton = this.buildElement(   GoLogoLoHTML.BUTTON, 
+                                            GoLogoLoGUIId.GOLOGOLO_CHANGE_TEXT_INPUT_MODAL_ENTER_BUTTON,
+                                            [GoLogoLoGUIClass.GOLOGOLO_MODAL_BUTTON],
+                                            [],
+                                            GOLOGOLOText.GOLOGOLO_CHANGE_TEXT_INPUT_MODAL_ENTER_BUTTON_TEXT);
+        let cancelButton = this.buildElement(GoLogoLoHTML.BUTTON, 
+                                            GoLogoLoGUIId.GOLOGOLO_CHANGE_TEXT_INPUT_MODAL_CANCEL_BUTTON,
+                                            [GoLogoLoGUIClass.GOLOGOLO_MODAL_BUTTON],
+                                            [],
+                                            GOLOGOLOText.GOLOGOLO_CHANGE_TEXT_INPUT_MODAL_CANCEL_BUTTON_TEXT);
+        let footer = this.buildElement(     GoLogoLoHTML.FOOTER, 
+                                            "", 
+                                            [GoLogoLoGUIClass.GOLOGOLO_MODAL_FOOTER],
+                                            [],
+                                            GOLOGOLOText.GOLOGOLO_CHANGE_TEXT_INPUT_MODAL_FOOTER_TEXT);
+        p.appendChild(strong);
+        section.appendChild(p);
+        textFrame.appendChild(header);
+        textFrame.appendChild(section);
+        section.appendChild(textField);
+        section.appendChild(enterButton);
+        section.appendChild(cancelButton);
+        textFrame.appendChild(footer);
+        textModal.appendChild(textFrame);
+        return textModal;
+    }
+
+    showChangeTextInputDialog(){
+        let dialog = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT_INPUT_MODAL);
+        let text = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT_INPUT_MODAL_TEXTFIELD);
+        text.value = "";
+        dialog.classList.add(GoLogoLoGUIClass.IS_VISIBLE);
+    }
+
+    hideChangeTextInputDialog(){
+        let dialog = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT_INPUT_MODAL);
+        dialog.classList.remove(GoLogoLoGUIClass.IS_VISIBLE);
+    }
+ 
 }

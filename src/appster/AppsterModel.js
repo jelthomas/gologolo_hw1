@@ -139,13 +139,4 @@ export default class AppsterModel {
         this.view.loadListData(this.listToEdit);
     }
 
-    editTextColor(textColor){
-        let work = this.recentWork[0];
-        work.setTextColor(textColor);
-    }
-
-    editFontSize(font){
-        let work = this.recentWork[0];
-        work.setFontSize(font);
-    }
 }

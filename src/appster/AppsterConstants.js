@@ -133,6 +133,7 @@ export const AppsterHTML = {
     HIDDEN: "hidden",
     ID: "id",
     INPUT: "input",
+    KEYCODE: "keycode",
     KEYUP: "keyup",
     LI: "li",
     ONCLICK: "onclick",

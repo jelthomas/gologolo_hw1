@@ -6,6 +6,8 @@ import GoLogoLoController from './GoLogoLoController.js'
 class GoLogoLoApp extends Appster {
     constructor(initModel, initView, initController) {
         super(initModel, initView, initController);
+        this.view = initView;
+        this.controller = initController;
     }
 }
 
@@ -14,6 +16,7 @@ let model = new GoLogoLoModel();
 let view = new GoLogoLoView();
 let controller = new GoLogoLoController();
 
-// MAKE THE APP AND LAUNCH IT
 let app = new GoLogoLoApp(model, view, controller);
 app.launch("./src/gologolo/GoLogoLoData.json");
+
+

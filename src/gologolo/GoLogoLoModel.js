@@ -44,4 +44,49 @@ export default class GoLogoLoModel extends AppsterModel {
         return appWork;
     }
 
+    editTextColor(textColor){
+        let work = this.recentWork[0];
+        work.setTextColor(textColor);
+    }
+
+    editFontSize(font){
+        let work = this.recentWork[0];
+        work.setFontSize(font);
+    }
+
+    editBackgroundColor(backgroundColor){
+        let work = this.recentWork[0];
+        work.setBackgroundColor(backgroundColor);
+    }
+
+    editBorderColor(borderColor){
+        let work = this.recentWork[0];
+        work.setBorderColor(borderColor);
+    }
+
+    editBorderWidth(width){
+        let work = this.recentWork[0];
+        work.setBorderThickness(width);
+    }
+
+    editBorderRadius(radius){
+        let work = this.recentWork[0];
+        work.setBorderRadius(radius);
+    }
+
+    editPadding(input){
+        let work = this.recentWork[0];
+        work.setPadding(input);
+    }
+
+    editMargin(input){
+        let work = this.recentWork[0];
+        work.setMargin(input);
+    }
+
+    editText(text){
+        let work = this.recentWork[0];
+        work.setText(text);
+    }
+
 }

@@ -19,6 +19,11 @@
         {"appster_illegal_length_confirm_modal_ok_button_text": "Ok"},
         {"appster_illegal_length_confirm_modal_footer_text": "Name too short"},
         
+        {"gologolo_text_input_modal_prompt_text": "Enter new text for your logo: "},
+        {"gologolo_text_input_modal_enter_button_text": "Enter"},
+        {"gologolo_text_input_modal_cancel_button_text": "Cancel"},
+        {"gologolo_text_input_modal_footer_text": "Changing Logo Text"},
+
         {"appster_text_input_modal_prompt_text": "Enter a name for your logo: "},
         {"appster_text_input_modal_enter_button_text": "Enter"},
         {"appster_text_input_modal_cancel_button_text": "Cancel"},
