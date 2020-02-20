@@ -150,6 +150,9 @@ export default class AppsterController {
             this.model.view.showIllegalLengthConfirmModalDialog();
             return;
         }
+        if(newName.length > 30){
+            newName = newName.slice(0,30) + "...";
+        }
         this.model.goList(newName);
     }
 
