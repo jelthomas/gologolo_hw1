@@ -101,9 +101,12 @@ export default class GoLogoLoController
             font = 5;
         }
         font = font*2 + "pt";
-        this.model.editFontSize(font);
         let text = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT);
+        console.log(this.model.recentWork[0].getFontSize());
         text.style.fontSize = font;
+        console.log(text.style.fontSize);
+        this.model.editFontSize(font);
+        console.log(text.style.fontSize);
     }
 
     processChangeBorderWidth= () => {

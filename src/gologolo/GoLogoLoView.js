@@ -114,6 +114,7 @@ export default class GoLogoLoView extends AppsterView {
     }
 
     loadWork(work) {
+        this.loadWorkStyle(work);
         let textDiv = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT);
         textDiv.innerHTML = work.getText();
         let fontSizeSlider = document.getElementById(GoLogoLoGUIId.GOLOGOLO_FONT_SIZE_SLIDER);
@@ -132,16 +133,18 @@ export default class GoLogoLoView extends AppsterView {
         paddingSlider.value = work.getPadding();
         let marginSlider = document.getElementById(GoLogoLoGUIId.GOLOGOLO_MARGIN_SLIDER);
         marginSlider.value = work.getMargin();
-        this.loadWorkStyle(work);
     }
 
     loadWorkStyle(work) {
         let textDiv = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT);
+        textDiv.style.fontSize = work.getFontSize();
         textDiv.style.color = work.getTextColor();
         textDiv.style.backgroundColor = work.getBackgroundColor();
         textDiv.style.borderColor = work.getBorderColor();
         textDiv.style.borderRadius = work.getBorderRadius();
-        textDiv.style.borderThickness = work.getBorderThickness();
+        textDiv.style.borderWidth = work.getBorderThickness();
+        textDiv.style.padding = work.getPadding();
+        textDiv.style.margin = work.getMargin();
     }
 
     addListItem(initText) {
@@ -224,5 +227,5 @@ export default class GoLogoLoView extends AppsterView {
         let dialog = document.getElementById(GoLogoLoGUIId.GOLOGOLO_TEXT_INPUT_MODAL);
         dialog.classList.remove(GoLogoLoGUIClass.IS_VISIBLE);
     }
- 
+
 }

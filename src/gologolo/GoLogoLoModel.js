@@ -16,6 +16,7 @@ export default class GoLogoLoModel extends AppsterModel {
         console.log("load " + workToLoad.getName());
     }
 
+    
     makeColor(colorData) {
         return "rgb(" + colorData.red + ", " + colorData.green + ", " + colorData.blue + ")";
     }
@@ -51,7 +52,9 @@ export default class GoLogoLoModel extends AppsterModel {
 
     editFontSize(font){
         let work = this.recentWork[0];
+        console.log(this.recentWork[0].getFontSize() + " " + this.recentWork[1].getFontSize() + " " + this.recentWork[2].getFontSize());
         work.setFontSize(font);
+        console.log(this.recentWork[0].getFontSize() + " " + this.recentWork[1].getFontSize() + " " + this.recentWork[2].getFontSize());
     }
 
     editBackgroundColor(backgroundColor){

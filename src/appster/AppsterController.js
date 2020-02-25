@@ -85,11 +85,6 @@ export default class AppsterController {
         this.model.goHome();
     }
 
-    processGoEdit(workToEdit) {
-        console.log("processGoEdit");
-        this.model.goEdit(workToEdit);
-    }
-
     /**
      * This function is called when the user requests to create
      * new work.

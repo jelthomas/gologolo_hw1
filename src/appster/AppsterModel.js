@@ -25,7 +25,29 @@ export default class AppsterModel {
     }
 
     goList(newName){
-        let length = this.recentWork.length
+        let length = this.recentWork.length;
+        let parts;
+        if(newName.includes(" ")){
+            console.log(newName.length);
+            parts = newName.split(" ");
+            let newParts = [];
+            for(let i = 0; i < parts.length; i++){
+                if(parts[i] != ""){
+                    newParts.push(parts[i]);
+                }
+            }
+            newName = "";
+            for(let i = 0; i < newParts.length; i++){
+                if(i != newParts.length - 1){
+                    newName = newName + newParts[i] + " ";
+                }
+                else{
+                    newName = newName + newParts[i];
+                }
+            }
+            console.log(newName);
+            console.log(newName.length);
+        }
         for(let i = 0; i < length; i++){
             if(newName == this.recentWork[i].name){
                 this.view.hideTextInputDialog();
